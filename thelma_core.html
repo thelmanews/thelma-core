@@ -66,6 +66,17 @@
         },
         completed: function() {
 
+        },
+        /**
+         * Save can be called to retrieve the current state of all published attributes of a component.
+         * @return {JSON string} serialized object of all attributes and values.
+         */
+        save: function(){
+          var currentState = {};
+          for(attribute in this.publish){
+            currentState[attribute] = this[attribute];
+          }
+          return JSON.stringify(currentState);
         }
 
       });
