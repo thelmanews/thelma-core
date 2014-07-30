@@ -28,7 +28,7 @@
 </polymer-element>
 -->
 
-<polymer-element name="th-animated" attributes="animateOnInit animateAfter completed animate reset color" resetable="true" animatable="true">
+<polymer-element name="th-animated" attributes="animateOnInit animateAfter completed animate getState reset color" resetable="true" animatable="true">
   
   <script>
       Polymer('th-animated', {  
@@ -66,6 +66,17 @@
         },
         completed: function() {
 
+        },
+        /**
+         * Save can be called to retrieve the current state of all published attributes of a component.
+         * @return {JSON string} serialized object of all attributes and values.
+         */
+        getState: function(){
+          var currentState = {};
+          for(var attribute in this.publish){
+            currentState[attribute] = this[attribute];
+          }
+          return JSON.stringify(currentState);
         }
 
       });
