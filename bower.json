@@ -5,6 +5,6 @@
   "main": "thelma-components.html",
   "dependencies": {
     "polymer": "Polymer/polymer#0.3.4",
-    "platform": "Polymer/platform#0.3.4",
+    "platform": "Polymer/platform#0.3.4"
   }
 }
