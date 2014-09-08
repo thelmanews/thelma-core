@@ -1,40 +1,40 @@
+<!--
+    @license
+    Copyright (c) 2014 Thelma Project Authors. All rights reserved.
+    This code may only be used under the MIT license found at http://thelmanews.github.io/LICENSE.txt
+    The complete set of authors may be found at http://thelmanews.github.io//AUTHORS.txt
+    The complete set of contributors may be found at http://thelmanews.github.io/CONTRIBUTORS.txt
+-->
+
 <link rel="import" href="../polymer/polymer.html">
 
-<!--      
-  multiple inheritance is not supported by polymer so moving this function to th-d3-chart
-<polymer-element name="th-has-datapoint" attributes="">
-  <script>
-      Polymer('th-has-datapoint', { 
+<!--
+A Core element which all thelma animated elements extend. No use as a stand alone component 
 
-       extractElementDataPoints : function() {
-            var barInfos = this.querySelectorAll('th-data-point');
-            var dataFromElements = [];
-            [].forEach.call(barInfos, function(dataPointEl) {
-                var dataPoint = {};
-                [].forEach.call(dataPointEl.attributes, function(attr) {
-                  console.log(attr);
-                  dataPoint[attr.name] = attr.value;
-                });
-                console.log(dataPoint);
-                dataFromElements.push(dataPoint);
-            });
-
-            return dataFromElements;
-
-        }
-
-      });
-  </script>
-</polymer-element>
+@element th-animated
+@blurb A Core element which all thelma animated elements extend. No use as a stand alone component
 -->
 
 <polymer-element name="th-animated" attributes="animateOnInit animateAfter completed animate getState reset color" resetable="true" animatable="true">
   
   <script>
-      Polymer('th-animated', {  
-        animationDelay: 1000,
+      Polymer('th-animated', { 
+        /**
+         * Milliseconds to wait before animating the element (calling animate method)
+         * It has higher priority than animateOnInit
+         * @type {Number}
+         */
         animateAfter: 0,
-        animateOnInit: false,  //should be false actually. true for demo
+        /**
+         * Animate the component as soon as the component is ready
+         * Setting animateAfter disables animateOnInit
+         * @type {Boolean}
+         */
+        animateOnInit: false,  
+        /**
+         * Flag indicates if the element is initialized
+         * @type {Boolean}
+         */
         initialized: false,
         domReady: function() {
             this.init();
@@ -58,14 +58,23 @@
 
 
         },
+        /**
+         * This method is called by automatically. All the components extending th-animated need to implement it.
+         * @return {Null} 
+         */
         init: function() {
         },
+        /**
+         * Reset the animation. All the components extending th-animated need to implement it.
+         * @return {null} 
+         */
         reset: function() {
         },
+        /**
+         * Starts the animation. All the components extending th-animated need to implement it.
+         * @return {null} 
+         */
         animate: function() {
-        },
-        completed: function() {
-
         },
         /**
          * Save can be called to retrieve the current state of all published attributes of a component.
